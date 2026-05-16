@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interactive Navigation Menu</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f4f7fb;
+    }
+
+    /* Navigation Bar */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 60px;
+      background: transparent;
+      transition: 0.4s ease;
+      z-index: 1000;
+    }
+
+    nav.scrolled {
+      background: #0f172a;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      padding: 14px 60px;
+    }
+
+    .logo {
+      color: white;
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .menu {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+
+    .menu li a {
+      text-decoration: none;
+      color: white;
+      font-size: 17px;
+      font-weight: 500;
+      padding: 10px 16px;
+      border-radius: 6px;
+      transition: 0.3s ease;
+    }
+
+    .menu li a:hover {
+      background: white;
+      color: #0f172a;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(to right, #2563eb, #0f172a);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 20px;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .hero h1 {
+      font-size: 58px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 21px;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: white;
+      color: #0f172a;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 17px;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #0f172a;
+      color: white;
+      border: 2px solid white;
+    }
+
+    /* Sections */
+    section {
+      padding: 120px 80px;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 42px;
+      color: #0f172a;
+      margin-bottom: 25px;
+    }
+
+    section p {
+      max-width: 950px;
+      margin: auto;
+      font-size: 18px;
+      line-height: 1.9;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    /* About */
+    #about {
+      background: white;
+    }
+
+    /* Services */
+    #services {
+      background: #e0f2fe;
+    }
+
+    .service-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .service-box {
+      background: white;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: 0.3s ease;
+    }
+
+    .service-box:hover {
+      transform: translateY(-10px);
+    }
+
+    .service-box h3 {
+      margin-bottom: 15px;
+      color: #2563eb;
+      font-size: 24px;
+    }
+
+    .service-box p {
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* Contact */
+    #contact {
+      background: rgba(160, 85, 239, 0.137);
+    }
+
+    .contact-box {
+      max-width: 700px;
+      margin: auto;
+      margin-top: 40px;
+      background: #f8fafc;
+      padding: 40px;
+      border-radius: 14px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .contact-box p {
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+
+    footer {
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 15px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+      }
+
+      nav.scrolled {
+        padding: 12px 20px;
+      }
+
+      .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      section {
+        padding: 100px 25px;
+      }
+
+      section h2 {
+        font-size: 34px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="logo">MyWebsite</div>
+
+    <ul class="menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero" id="home">
+    <div class="hero-content">
+      <h1>Build Modern & Interactive Websites</h1>
+
+      <p>
+        We create responsive and professional websites with modern UI designs,
+        smooth animations, interactive navigation menus, and user-friendly
+        experiences using HTML, CSS, and JavaScript.
+      </p>
+
+      <a href="#services" class="btn">Explore Services</a>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Us</h2>
+
+    <p>
+      We are passionate about creating clean, modern, and responsive websites
+      that provide the best experience for users across all devices.
+      Our focus is on combining attractive design with interactive functionality
+      to build websites that are both visually appealing and highly effective.
+    </p>
+
+    <p>
+      This project demonstrates an interactive navigation menu that remains
+      fixed on the screen and changes its appearance while scrolling or
+      hovering over menu items. Such navigation systems improve usability,
+      accessibility, and overall user engagement.
+    </p>
+
+    <p>
+      Our goal is to deliver fast, secure, and responsive websites that help
+      businesses and individuals establish a strong online presence.
+    </p>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services">
+    <h2>Our Services</h2>
+
+    <p>
+      We provide professional frontend web development services that help
+      businesses create engaging and user-friendly digital experiences.
+    </p>
+
+    <div class="service-container">
+
+      <div class="service-box">
+        <h3>Web Design</h3>
+        <p>
+          Modern and attractive website layouts designed to improve
+          user interaction and brand identity.
+        </p>
+      </div>
+
+      <div class="service-box">
+        <h3>Responsive Design</h3>
+        <p>
+          Websites that work smoothly on desktops, tablets, and mobile devices
+          with perfect responsiveness.
+        </p>
+      </div>
+
+      <div class="service-box">
+        <h3>Interactive UI</h3>
+        <p>
+          Dynamic user interfaces with animations, hover effects,
+          smooth scrolling, and interactive menus.
+        </p>
+      </div>
+
+      <div class="service-box">
+        <h3>Frontend Development</h3>
+        <p>
+          Professional frontend development using HTML, CSS, JavaScript,
+          and modern UI techniques.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+
+    <p>
+      Have an idea for a project or need a professional website?
+      Get in touch with us and let’s create something amazing together.
+    </p>
+
+    <div class="contact-box">
+      <p><strong>Email:</strong> contact@mywebsite.com</p>
+      <p><strong>Phone:</strong> +91 98765 43210</p>
+      <p><strong>Location:</strong> Hyderabad, India</p>
+      <p><strong>Working Hours:</strong> Monday - Saturday | 9:00 AM - 6:00 PM</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2026 MyWebsite | All Rights Reserved
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    const navbar = document.getElementById("navbar");
+
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+  </script>
+
+</body>
+</html>
